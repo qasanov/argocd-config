@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment # Kubernetes resource kind we are creating
+metadata:
+  name: jhipstersampleapplication2
+spec:
+  selector:
+    matchLabels:
+      app: jhipstersampleapplication2
+  replicas: 2 # Number of replicas that will be created for this deployment
+  template:
+    metadata:
+      labels:
+        app: jhipstersampleapplication2
+    spec:
+      containers:
+        - name: jhipstersampleapplication2
+          image: jhipstersampleapplication2:latest # Image that will be used to containers in the cluster
+          env:
+          - name: JHIPSTER_SLEEP
+            value: "10"
+          - name: JHIPSTER_SECURITY_AUTHENTICATION_JWT_BASE64_SECRET
+            value: "OTJiYzQ4YTczZDNkMzUzNzNhOGUzNTFkMGM0ZGVlOWY3ODVmY2VhZDk2ZWJlNjU1MDE1M2UyMjAwYWU0MjgyZGI1MDIzZGQyNWZjMGFiMTMyNWQwNTNiN2FkNTliNDM2YzVlNTgwYTk1MDgzZjQxNjlhZWU0OWMwMjk5YjNhNzE="
+          - name: SPRING_PROFILES_ACTIVE
+            value: "dev"
+          - name: EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE
+            value: "http://admin:admin@10.98.20.110:8761/eureka"
+          - name: SPRING_CLOUD_CONFIG_URI
+            value: "http://admin:admin@10.98.20.110:8761/config"
+          - name: SPRING_DATASOURCE_URL
+            value: "jdbc:h2:mem:jhipstersampleapplication2;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;MODE=LEGACY"
+          - name: SPRING_DATASOURCE_USERNAME
+            value: "jhipstersampleapplication2"
+          - name: SPRING_DATASOURCE_PASSWORD
+            value: "jhipstersampleapplication2"
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080 # The port that the container is running on in the cluster
