@@ -23,9 +23,9 @@ spec:
           - name: SPRING_PROFILES_ACTIVE
             value: "dev"
           - name: EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE
-            value: "http://admin:admin@10.98.20.110:8761/eureka"
+            value: "http://admin:admin@jhipster-registry:8761/eureka"
           - name: SPRING_CLOUD_CONFIG_URI
-            value: "http://admin:admin@10.98.20.110:8761/config"
+            value: "http://admin:admin@jhipster-registry:8761/config"
           - name: SPRING_DATASOURCE_URL
             value: "jdbc:h2:mem:jhipstersampleapplication2;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;MODE=LEGACY"
           - name: SPRING_DATASOURCE_USERNAME
