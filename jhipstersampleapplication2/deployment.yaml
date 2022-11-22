@@ -27,11 +27,11 @@ spec:
           - name: SPRING_CLOUD_CONFIG_URI
             value: "http://admin:admin@jhipster-registry:8761/config"
           - name: SPRING_DATASOURCE_URL
-            value: "jdbc:h2:mem:jhipstersampleapplication2;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;MODE=LEGACY"
+            value: "jdbc:postgresql://postgres:5432/postgres"
           - name: SPRING_DATASOURCE_USERNAME
-            value: "jhipstersampleapplication2"
+            value: "postgres"
           - name: SPRING_DATASOURCE_PASSWORD
-            value: "jhipstersampleapplication2"
+            value: "123456"
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080 # The port that the container is running on in the cluster
