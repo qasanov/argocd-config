@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres
+  labels:
+    app: postgres
+    tier: database
+spec:
+  selector: # postgres Pod Should contain same labels
+    matchLabels:
+      app: postgres
+      tier: database
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels: # Must match 'Service' and 'Deployment' selectors
+        app: postgres
+        tier: database
+    spec:
+      containers:
+        - image: postgres:latest # image from docker-hub          
+          name: postgres
+          env:
+            - name: POSTGRES_PASSWORD
+              value : "123456"
+          ports:
+            - containerPort: 5432
+              name: postgres
