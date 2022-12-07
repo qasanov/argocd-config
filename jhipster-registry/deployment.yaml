@@ -16,13 +16,15 @@ spec:
                 - name: jhipster-registry
                   image: jhipster-registry:5.0.2 # Image that will be used to containers in the cluster
                   env:
-                      -   name: JHIPSTER_SLEEP
-                          value: "10"
-                      -   name : JHIPSTER_SECURITY_AUTHENTICATION_JWT_BASE64_SECRET
-                          value : "OTJiYzQ4YTczZDNkMzUzNzNhOGUzNTFkMGM0ZGVlOWY3ODVmY2VhZDk2ZWJlNjU1MDE1M2UyMjAwYWU0MjgyZGI1MDIzZGQyNWZjMGFiMTMyNWQwNTNiN2FkNTliNDM2YzVlNTgwYTk1MDgzZjQxNjlhZWU0OWMwMjk5YjNhNzE="
-                      -   name : SPRING_PROFILES_ACTIVE
-                          value : "prod"
+                      - name: SPRING_CLOUD_CONFIG_SERVER_COMPOSITE_0_PRIVATE_KEY
+                        valueFrom:
+                          secretKeyRef:
+                            name: jhipster-registry-secret
+                            key: ssh-privatekey                       
                   imagePullPolicy: IfNotPresent
                   ports:
                       - containerPort: 8761  # The port that the container is running on in the cluster
+                 envFrom:
+                  - configMapRef:
+                      name: jhipster-registry-configmap     
 
