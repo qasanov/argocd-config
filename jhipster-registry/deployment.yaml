@@ -20,7 +20,12 @@ spec:
                         valueFrom:
                           secretKeyRef:
                             name: jhipster-registry-secret
-                            key: ssh-privatekey                       
+                            key: ssh-privatekey
+                      - name: JHIPSTER_SECURITY_AUTHENTICATION_JWT_BASE64_SECRET
+                        valueFrom:
+                          secretKeyRef:
+                            name: jhipster-registry-secret
+                            key: registry-token       
                   imagePullPolicy: IfNotPresent
                   ports:
                       - containerPort: 8761  # The port that the container is running on in the cluster
