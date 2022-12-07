@@ -26,5 +26,5 @@ spec:
                       - containerPort: 8761  # The port that the container is running on in the cluster
                   envFrom:
                    - configMapRef:
-                      name: jhipster-registry-configmap     
+                      name: jhipster-registry     
 
